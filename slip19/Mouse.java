@@ -1,65 +1,36 @@
+import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.*;
-import javax.swing.*;
-
-/*
-<applet code=Mouse width=400 height=400></applet>
-*/
-
-public class MouseApplet extends JApplet implements MouseListener,MouseMotionListener{
-	private String msg="";
-
-	public void init(){
-		addMouseListener(this);
-		addMouseMotionListener(this);
-	}
-
-	public void paint(Graphics g){
-		super.paint(g);
-		FontMetrics fm = g.getFontMetrics();
-		int w = fm.stringWidth(msg);
-		int h = fm.getHeight();
-		int x = (getWidth()-w)/2;
-		int y = (getHeight()-h)/2;
-		g.drawString(msg,x, y);
-	}
-
-	public void mouseEntered(MouseEvent me){
-		msg = "Mouse Entered";
-		repaint();
-	}
-
-	public void mouseExited(MouseEvent me){
-		msg = "Mouse Exited";
-		repaint();
-	}
-
-	public void mousePressed(MouseEvent me){
-		msg = "Mouse Pressed";
-		repaint();
-	}
-
-	public void mouseReleased(MouseEvent me){
-		msg = "Mouse Released";
-		repaint();
-	}
-
-	public void mouseClicked(MouseEvent me){
-		msg = "Mouse Clicked";
-		repaint();
-	}
-
-	public void mouseDragged(MouseEvent me){
-		msg = "Mouse Dragged";
-		repaint();
-	}
-
-	public void mouseMoved(MouseEvent me){
-		msg = "Mouse Moved";
-		repaint();
-	}
-}
-
-
-
-
+/* <APPLET CODE ="AppletKeyboard.class" WIDTH=300 HEIGHT=200> </APPLET> */
+public class AppletKeyboard extends Applet implements KeyListener
+  {
+       TextField t,tt,tp,tr;
+        public void init()
+            {
+                t=new TextField(20);
+                t.addKeyListener(this);
+                tt=new TextField(70);
+                tp=new TextField(70);
+                tr=new TextField(70);
+                add(t);
+                add(tt);
+                add(tr);
+                add(tp);
+            }
+                public void keyTyped(KeyEvent e)
+                     {
+                         tt.setText("key Released"+e.getKeyChar());
+                      }
+                          public void keyReleased(KeyEvent e)
+                             {
+                                 tr.setText("key Released"+e.getKeyChar());
+                             }
+                                 public void keyPressed(KeyEvent e)
+                                    {
+                                       int kc;
+                                     String s;
+                                     kc=e.getKeyCode();
+                                     s=e.getKeyText(kc);
+                                     tp.setText("Key Pressed"+s);
+                                  }
+   }     
