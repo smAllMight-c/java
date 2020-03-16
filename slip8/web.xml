@@ -1,0 +1,10 @@
+    <servlet>
+        <servlet-name>visit</servlet-name>
+        <servlet-class>visit</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>vist</servlet-name>
+        <url-pattern>/visit</url-pattern>
+    </servlet-mapping>
+
